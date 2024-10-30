@@ -1,0 +1,45 @@
+﻿@page "/intrari"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject DbProject1Context _dbContext
+
+<PageTitle>INTRARI</PageTitle>
+
+<h3>Intrari</h3>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped text-md-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Numar</th>
+                    <th>Data</th>
+                    <th>Partener</th>
+                    <th>Gestiune</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in _dbContext.Intraris)
+                {
+                    var partener = _dbContext.Parteneris.Where(x => x.Id == result.Partener).FirstOrDefault();
+                    var gestiune = _dbContext.Gestiunis.Where(x => x.Id == result.Gestiune).FirstOrDefault();
+                    <tr>
+                        <td>@result.Id</td>
+                        <td>@result.Numar</td>
+                        <td>@result.Data</td>
+                        <td>@partener.Denumire</td>
+                        <td>@gestiune.Denumire</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+
+}
+
+
+

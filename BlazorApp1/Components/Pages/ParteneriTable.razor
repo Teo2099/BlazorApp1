@@ -1,0 +1,43 @@
+﻿@page "/parteneri"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject DbProject1Context _dbContext
+
+<PageTitle>PARTENERI</PageTitle>
+
+<h3>Parteneri</h3>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped text-md-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Cod</th>
+                    <th>Denumire</th>
+                    <th>CUI</th>
+                    <th>Adresa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in _dbContext.Parteneris)
+                {
+                    <tr>
+                        <td>@result.Id</td>
+                        <td>@result.Cod</td>
+                        <td>@result.Denumire</td>
+                        <td>@result.Cui</td>
+                        <td>@result.Adresa</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+
+}
+
+
+

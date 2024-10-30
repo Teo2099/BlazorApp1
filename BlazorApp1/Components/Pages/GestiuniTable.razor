@@ -1,0 +1,39 @@
+﻿@page "/gestiuni"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject DbProject1Context _dbContext
+
+<PageTitle>GESTIUNI</PageTitle>
+
+<h3>Gestiuni</h3>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped text-md-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Cod</th>
+                    <th>Denumire</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in _dbContext.Gestiunis)
+                {
+                    <tr>
+                        <td>@result.Id</td>
+                        <td>@result.Cod</td>
+                        <td>@result.Denumire</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+
+}
+
+
+

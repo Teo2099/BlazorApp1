@@ -1,0 +1,44 @@
+﻿@page "/intrari_detaliu"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@inject DbProject1Context _dbContext
+
+<PageTitle>INTRARI DETALIU</PageTitle>
+
+<h3>Intrari detaliu</h3>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped text-md-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Id_intrari</th>
+                    <th>Produs</th>
+                    <th>Cantitate</th>
+                    <th>Valoare</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in _dbContext.IntrariDetalius)
+                {
+                    var produs = _dbContext.Produses.Where(x => x.Id == result.Produs).FirstOrDefault();
+                    <tr>
+                        <td>@result.Id</td>
+                        <td>@result.IdIntrari</td>
+                        <td>@produs.Denumire</td>
+                        <td>@result.Cantitate</td>
+                        <td>@result.Valoare</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+
+}
+
+
+
